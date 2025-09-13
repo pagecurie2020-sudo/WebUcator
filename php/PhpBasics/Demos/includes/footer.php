@@ -1,0 +1,4 @@
+<hr>
+<?php
+  echo $footerText;
+?>
