@@ -10,18 +10,36 @@
 <body>
 <main>
 <?php
-if($_SERVER["REQUEST_METHOD"] == "GET" && !empty($_GET["dominant-hand"]) && !empty($_GET["last-name"])){
+
+if($_SERVER["REQUEST_METHOD"]==="GET" && !empty($_GET["dominant-hand"] ) && !empty($_GET["last-name"])){
 
 
-$lastName = $_GET["last-name"];
-$answer = $_GET["dominant-hand"];
+$name = $_GET["last-name"];
+$hand = $_GET["dominant-hand"];
 
-echo "<p>Hello $lastName!<br/> You are   $answer   handed </p>";
+
+switch($hand){
+
+case "right":
+echo "<p>$name, you are $hand handed. </p>";
+break;
+
+case "left":
+echo "<p>$name, you are $hand  handed.</p>";
+break;
+
+
+
+}
+
+
 
 }else{
 
- echo "<p>YOu must fill out the form. Please try again <a href='greeting.html'>Try again</a></p>";
+  echo "<p>You did not type a name and/or select a choice</p>";
+
 }
+
 ?>
 </main>
 </body>
