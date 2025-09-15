@@ -11,30 +11,49 @@
 <main>
 <?php
 
+
+//using this code and if (...empty()....), we will use switch(). Dont forget to put and test error_reporting()
+
 ERROR_REPORTING(E_ALL);
 ini_set("display_errors", 1);
 
-if($_SERVER["REQUEST_METHOD"] ==="GET" && empty($_GET["last-name"]) || empty($_GET["dominant-hand"])){
+if($_SERVER["REQUEST_METHOD"]==="GET"  && empty($_GET["last-name"]  )  || empty($_GET["dominant-hand"])){
 
-    echo '<h1>An Error occured</h1>
+
+    echo '
+
+    <h4> Error has occured.</h4>
+    <p>
+
+    You must type your last name <br/>
+    Or you must select your hand type(right/left).
     
-        <p>
-        You either did not type your name or <br/>
-         you did no tell us your hand type.<br/>
-        Please type your name and choose right or left handed. 
+    
+    </p>';
+    
+    
+
+} else{
+
+
+    $name = $_GET["last-name"];
+    $handType = $_GET["dominant-hand"];
+
+
+    switch($handType){
+
+    case "right":
+        echo "<p>$name, you are $handType handed </p>";
+        break;
+
+    case "left":
+        echo "<p>$name, you are $handType handed </p>";
+        break;
+
         
-        </p>
-    
-        ';
 
-}else{
+    }
 
-
-    $name = $_GET["last-name"]; 
-    $choice = $_GET["dominant-hand"];
-
-
-   echo "<h1>  $name, you are $choice handed.</h1>";
 
 
 
