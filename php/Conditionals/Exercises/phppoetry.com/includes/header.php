@@ -1,19 +1,22 @@
 <?php
   require_once 'utilities.php';
   if (isDebugMode()) {
-    ini_set('display_errors', '1');
+    ini_set('display_errors',  1);
   }
   $pageTitleTag="";
 
 
-  if($pageTitle){
+  ($pageTitle) ? $pageTitle . " |  The Poet Tree Club BEEEEEE"  : " **** The Poet Tree Club";
 
-    $pageTitleTag= "$pageTitle" . " | *** The Poet Tree Club";
+
+  /*if($pageTitle){
+
+    $pageTitleTag= "$pageTitle" . " |  The Poet Tree Club";
   }else{
 
     $pageTitleTag = " The Poet Tree Club";
 
-  }
+  }*/
 
   
 ?>
