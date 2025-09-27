@@ -24,8 +24,10 @@
     $box = [];
 
     while($i <= 100){
+ 
+      $color = ($i < 25) ? "red" : ($i  < 50 ? "blue" : "green");
 
-      echo "<li>$i</li>";
+      echo "<li style='color:$color'> $i </li>";
 
      // if($i % 2 === 0){
 
@@ -43,21 +45,24 @@
 
   <h2>for</h2>
 
-  <!--<ul>-->
+<ul>
   <?php
-  $store = [];
+ // $store = [];
   for ($i = 1; $i <= count(range(1,100)); $i+=2){
 
-    $store[] = $i;
+    $color = ($i <=50) ? "green" : "purple";
 
+   // $store[] = $i;
+
+   echo "<li style='color : $color'> $i </li>";
    
   }
     //Use a for loop to output all the odd numbers
     //less than or equal to 100.
 
-  echo implode(", ", $store);
+ // echo implode(", ", $store);
   ?>
-  <!--</ul>-->
+  </ul>
 </main>
 </body>
 </html>
