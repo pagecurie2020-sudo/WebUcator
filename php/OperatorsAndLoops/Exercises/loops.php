@@ -15,12 +15,12 @@
 
 <body>
 <main>
-  <h2>Use while to print even numbers b/w 1-100</h2>
+  <h2>Looping through arrays</h2>
   <ul>
   <?php
     //Use a while loop to output all the even numbers
     //less than or equal to 100.
-    $i = 2;
+   /* $i = 2;
     $box = [];
 
     while($i <= 100){
@@ -60,9 +60,45 @@
     //Use a for loop to output all the odd numbers
     //less than or equal to 100.
 
- // echo implode(", ", $store);
+ // echo implode(", ", $store);*/
+
+ $fruits = ["apple", "banana", "orange", "pear", "cherry", "pineapple"];
+
+ $i = 1;
+
+ echo "<ul>";
+
+ foreach($fruits as $fruit){
+
+
+ $color =  ($i % 2 === 0) ? "blue" : "red";
+
+  echo "<li style='color:$color'> $i - $fruit</li>";
+
+  $i++;
+ }
+
+
+ echo "</ul>";
+
+
+  echo "<ul>";
+
+ $k = 7;
+  for($j=0; $j < 6; $j++ ){
+
+  $color =  ($j % 2 === 0) ? "green" : "orange";
+  echo "<li style='color:$color'> $k- $fruits[$j]</li>";
+
+  $k++;
+
+
+  }
+
+
+  echo "</ul>"
   ?>
-  </ul>
+
 </main>
 </body>
 </html>
