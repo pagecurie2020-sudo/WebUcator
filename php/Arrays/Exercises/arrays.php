@@ -41,7 +41,7 @@
     echo '<p>Returns a new array in reverse order.</p>';
     // Prove it. This one is done for you.
     $reversedNumbers = array_reverse($numbers);
-    $reversedColors = array_reverse($colors);
+    $reversedColors = array_reverse($colors , false);
     outputArray($reversedNumbers);
     outputArray($reversedColors);
     
@@ -53,34 +53,62 @@
 
     echo '<h2>asort()</h2>';
     echo '<p>Sorts on value. Keeps key-value pairs together.</p>';
+    asort($numbers);
+     print_r($numbers);
+     echo "<br/>";
+     var_dump($numbers);
+     echo "<br>";
+     outputArray($numbers);
     // Prove it with the $colors array.
     
     echo '<h2>ksort()</h2>';
     echo '<p>Sorts on key. Keeps key-value pairs together.</p>';
     // Prove it with the $colors array.
     
+    ksort($colors);
+    outputArray($colors);
+
+    
     echo '<h2>rsort()</h2>';
     echo '<p>Sorts in reverse on value and re-indexes.</p>';
     // Prove it with the $numbers array.
 
+    rsort($numbers);
+     outputArray($numbers);
+
     echo '<h2>arsort()</h2>';
     echo '<p>Sorts in reverse on value. Keeps key-value pairs.</p>';
+
+    arsort($colors);
+    outputArray($colors);
+    
     // Prove it with the $colors array.
     
     echo '<h2>krsort()</h2>';
     echo '<p>Sorts in reverse on key. Keeps key-value pairs.</p>';
     // Prove it with the $colors array.
+    krsort($colors);
+     outputArray($colors);
+
     
     echo '<h2>shuffle()</h2>';
     echo '<p>Randomly shuffles array and re-indexes.';
     // Prove it with the $numbers array.
+
+    shuffle($numbers);
+    outputArray($numbers);
     
     echo '<h2>array_keys()</h2>';
     echo '<p>Returns keys as indexed array.</p>';
+    
+     outputArray(array_keys($colors));
     // Prove it with the $colors array.
     
     echo '<h2>count()</h2>';
     echo '<p>Counts the number of elements in an array.</p>';
+
+    echo "Number of numbers: " . count($numbers) ."<br/>";
+    echo "Number of colors " .  count($colors) . "<br/>";
     /*
       Using count(), output
         Number of numbers: 5<br>
@@ -90,6 +118,9 @@
     echo '<h2>explode()</h2>';
     echo '<p>Splits a string on a string to create an array.';
     $spells = 'Riddikulus, Obliviate, Avada Kedavra, Expelliarmus';
+    $spellsArray = explode(",", $spells);
+
+    outputArray($spellsArray);
     /*
       Explode $spells into an array and assign that to $spellsArray.
       Then pass $spellsArray to outputArray(). It should output:
@@ -102,6 +133,9 @@
 
     echo '<h2>implode()</h2>';
     echo '<p>Joins an array on a string to create a string.</p>';
+
+     $spells = implode(" - ", $spellsArray);
+     echo $spells;
     /*
       Implode $spellsArray on ' - ' and assign that to $spells.
       Then output the $spells string. It should output:
@@ -110,6 +144,21 @@
 
     echo '<h2>is_array()</h2>';
     echo '<p>Checks if a passed-in argument is an array.</p>';
+
+    function outputIsArray($arr) {
+
+      if(is_array($arr)){
+        echo "<p>That is an arry</p>";
+        outputArray($arr);
+      }else{
+        echo "<p>That is not an array.</p>";
+      }
+
+
+    }
+
+    outputIsArray($spellsArray);
+    
     /*
       Write a function called outputIsArray() that takes one parameter:
         - $arr
@@ -125,6 +174,21 @@
 
     echo '<h2>array_key_exists()</h2>';
     echo '<p>Checks if an array contains a key.</p>';
+
+    function hasKey($key, $arr){
+
+      if(array_key_exists($key, $arr)){
+        echo "<p>$key is in that array.</p>";
+      }else{
+        echo " <p>$key is not in that array.</p>";
+      }
+
+
+
+    }
+    hasKey("hotpink", $colors);
+     hasKey("olivedrab", $colors);
+
     /*
       Write a function called hasKey() that takes two parameters:
         - $key
@@ -135,7 +199,7 @@
         <p>$key is not in that array.</p>
 
       Use hasKey() to check if these colors are in the $colors array:
-        - hotpink
+        - "hotpink"
         - olivedrab
     */
   
@@ -147,6 +211,8 @@
         onclick='document.body.style.backgroundColor=\"$color\";'>
           $text</button>";
     }
+
+    array_walk($colors, createButton("red", "I love apples"));
     
     // Use array_walk() to create buttons for all the colors in the
     // $colors array
